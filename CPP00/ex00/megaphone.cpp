@@ -1,6 +1,12 @@
 #include <iostream>
 #include <cctype>
 
+/*
+std -> namespace of the standard library
+:: -> "into"
+std::cout-> cout into std
+<< -> stream insertion  
+*/
 int main(int argc, char **argv)
 {
     if (argc == 1)
