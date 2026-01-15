@@ -15,8 +15,8 @@ class PhoneBook
         PhoneBook(); //constructeur
         ~PhoneBook(); //destructeur
 
-        void addContact(); //ADD
-        void searchContact(); // SEARCH
+        bool addContact(); //ADD
+        bool searchContact(); // SEARCH
 };
 
 

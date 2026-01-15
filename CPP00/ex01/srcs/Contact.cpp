@@ -10,7 +10,7 @@ Contact::~Contact()
 {
 }
 
-// Getters
+// Getters (ici string est vide par defaut)
 std::string Contact::getFirstName() const
 {
     return (this->_firstName);
@@ -36,7 +36,7 @@ std::string Contact::getDarkestSecret() const
     return (this->_darkestSecret);
 }
 
-// Setters
+// Setters (modifie la valeur avec input)
 void Contact::setFirstName(std::string firstName)
 {
     this->_firstName = firstName;  //-> for modifying private attribute using this function

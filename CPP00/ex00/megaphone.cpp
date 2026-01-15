@@ -6,6 +6,10 @@ std -> namespace of the standard library
 :: -> "into"
 std::cout-> cout into std
 << -> stream insertion  
+
+declare std::string type
+str.length -> function (method) that take length's variable
+from string class.
 */
 int main(int argc, char **argv)
 {
@@ -16,8 +20,10 @@ int main(int argc, char **argv)
     }
     for (int i = 1; i < argc; i++)
     {
-        for (int j = 0; argv[i][j]; j++)
-            std::cout << (unsigned char)toupper(argv[i][j]);
+        std::string str(argv[i]);
+        for (size_t j = 0; j < str.length(); j++)
+            str[j] = std::toupper(str[j]);
+        std::cout << str;
         if (i < argc - 1)
             std::cout << " ";
     }

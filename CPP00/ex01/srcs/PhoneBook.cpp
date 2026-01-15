@@ -24,33 +24,71 @@ PhoneBook::~PhoneBook()
 {
 }
 
-
-void PhoneBook::addContact(void)
+bool PhoneBook::addContact(void)
 {
     //Declare std::input for stocking user's input
     //Declare newContact object (temp)
     std::string input;
     Contact newContact;
 
-    //Ask user for each element
-    std::cout << "First name: "; //Affiche le texte sur l'ecran
-    std::getline(std::cin, input); //Lire une ligne tapée par user (stdin)
+/*----------------First Name--------------------------*/
+    std::cout << "First name: "; 
+    if (!std::getline(std::cin, input)) 
+        return (false);
+    while (input.empty())
+    {
+        std::cout << "Field can't be empty. First name: ";
+        if (!std::getline(std::cin, input))
+            return (false);
+    }
     newContact.setFirstName(input); //Assigne la valeur input au _firstName via une fonction.
 
+/*----------------Last Name--------------------------*/
     std::cout <<"Last name: ";
-    std::getline(std::cin, input);
+    if (!std::getline(std::cin, input))
+        return (false);
+    while (input.empty())
+    {
+        std::cout << "Field can't be empty. Last name: ";
+        if (!std::getline(std::cin, input))
+            return (false);
+    }
     newContact.setLastName(input);
 
+/*----------------Nickname--------------------------*/
     std::cout <<"Nickname: ";
-    std::getline(std::cin, input);
+    if (!std::getline(std::cin, input))
+        return (false);
+    while (input.empty())
+    {
+        std::cout << "Field can't be empty. Nickname: ";
+        if (!std::getline(std::cin, input))
+            return (false);
+    }
     newContact.setNickName(input);
 
+/*----------------Phone nb--------------------------*/
     std::cout <<"Phone number: ";
-    std::getline(std::cin, input);
+    if (!std::getline(std::cin, input))
+        return (false);
+    while (input.empty())
+    {
+        std::cout << "Field can't be empty. Phone number: ";
+        if (!std::getline(std::cin, input))
+            return (false);
+    }
     newContact.setPhoneNumber(input);  
 
+/*----------------Darkest secret--------------------------*/
     std::cout <<"Darkest secret: ";
-    std::getline(std::cin, input);
+    if (!std::getline(std::cin, input))
+        return (false);
+    while (input.empty())
+    {
+        std::cout << "Field can't be empty. Darkest secret: ";
+        if (!std::getline(std::cin, input))
+            return (false);
+    }
     newContact.setDarkestSecret(input);
 
     //Assign values from temp object to permanent array of private class
@@ -62,6 +100,7 @@ void PhoneBook::addContact(void)
     //Incriment total until its 8
     if (this->_total < 8)
         this->_total++;
+    return (true);
 }
 /*
 Display all contacts
@@ -85,13 +124,9 @@ void PhoneBook::print_Contacts(void)
 }
 /*
 We print the PhoneBook
-After we ask to user the index he needs with getline
-We convert it to int
-We check if it is ok
-Declare object Contact c for the shorter writing
-We print all information needed
+false = EOF (Ctrl + D)
 */
-void PhoneBook::searchContact(void)
+bool PhoneBook::searchContact(void)
 {
     int index;
     std::string input;
@@ -99,25 +134,48 @@ void PhoneBook::searchContact(void)
     if (this->_total == 0)
     {
         std::cout << "PhoneBook is empty" << std::endl;
-        return;
+        return (true);
     }
-    //Appeler la methode d une classe depuis une autre methode
+
+    //Appeler la methode d une classe depuis une autre methode (this)
     this->print_Contacts();
+
+    //Check if the index is empty or its not a number
     std::cout << "Enter index: ";
-    std::getline(std::cin, input);
+    if (!std::getline(std::cin, input))
+        return (false);
+    if (input.empty())
+    {
+        std::cout << "Invalid index" << std::endl;
+        return (true);
+    }
+
+    for (size_t i = 0; i < input.length(); i++)
+    {
+        if (!std::isdigit(input[i]))
+        {
+            std::cout << "Invalid index" << std::endl;
+            return (true);
+        }
+    }
     index = std::atoi(input.c_str()); //c_str->convert en const *char
 
     if (index < 0 || index >= this->_total)
     {
         std::cout << "Invalid index" << std::endl;
-        return;
+        return (true);
     }
+    // Declare c for make it shorter
     Contact c = this->_contacts[index];
+
+    //Display information of corresponding contact
     std::cout << "First name: " << c.getFirstName() << std::endl;
     std::cout << "Last name: " << c.getLastName() << std::endl;
     std::cout << "Nickname: " << c.getNickName() << std::endl;
     std::cout << "Phone number: " << c.getPhoneNumber() << std::endl;
     std::cout << "Darkest secret: " << c.getDarkestSecret() << std::endl;
+
+    return (true);
 }
 
 
