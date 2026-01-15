@@ -8,7 +8,7 @@ SRC_FILES = Contact.cpp \
 			main.cpp \
 			PhoneBook.cpp
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
@@ -17,7 +17,7 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
@@ -27,7 +27,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 clean:
 	rm -rf $(OBJ_DIR)
 
-fclean:
+fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all 

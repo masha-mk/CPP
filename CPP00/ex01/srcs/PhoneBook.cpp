@@ -1,10 +1,22 @@
-#include <PhoneBook.hpp>
+#include "PhoneBook.hpp"
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include <cstdlib>
+
+// If the string is to long, we take only 10 first carracters and we add "."
+std::string truncate(std::string str)
+{
+    if (str.length() > 10)
+        return (str.substr(0, 9) + ".");
+    return (str);
+}
 
 //Constructeur
 PhoneBook::PhoneBook()
 {
+    this->_index = 0;
+    this->_total = 0;
 }
 
 //Destructeur
@@ -51,10 +63,61 @@ void PhoneBook::addContact(void)
     if (this->_total < 8)
         this->_total++;
 }
+/*
+Display all contacts
+setw(10) -> " book" 10 chars and if the word is 
+shorter than 10, it completes with " " on the left until
+the total is equal to 10. 
+setw is equal to: printf("%10s", "Maria") in C.
+*/
+void PhoneBook::print_Contacts(void)
+{
+    std::cout << "      index|first name | last name|nickname" << std::endl;
+    for (int i = 0; i < this->_total; i++)
+    {
+        Contact c = this->_contacts[i];
 
+        std::cout << std::setw(10) << i << "|";
+        std::cout << std::setw(10) << truncate(c.getFirstName()) << "|";
+        std::cout << std::setw(10) << truncate(c.getLastName()) << "|";
+        std::cout << std::setw(10) << truncate(c.getNickName()) << std::endl;
+    }
+}
+/*
+We print the PhoneBook
+After we ask to user the index he needs with getline
+We convert it to int
+We check if it is ok
+Declare object Contact c for the shorter writing
+We print all information needed
+*/
 void PhoneBook::searchContact(void)
 {
-    
+    int index;
+    std::string input;
+
+    if (this->_total == 0)
+    {
+        std::cout << "PhoneBook is empty" << std::endl;
+        return;
+    }
+    //Appeler la methode d une classe depuis une autre methode
+    this->print_Contacts();
+    std::cout << "Enter index: ";
+    std::getline(std::cin, input);
+    index = std::atoi(input.c_str()); //c_str->convert en const *char
+
+    if (index < 0 || index >= this->_total)
+    {
+        std::cout << "Invalid index" << std::endl;
+        return;
+    }
+    Contact c = this->_contacts[index];
+    std::cout << "First name: " << c.getFirstName() << std::endl;
+    std::cout << "Last name: " << c.getLastName() << std::endl;
+    std::cout << "Nickname: " << c.getNickName() << std::endl;
+    std::cout << "Phone number: " << c.getPhoneNumber() << std::endl;
+    std::cout << "Darkest secret: " << c.getDarkestSecret() << std::endl;
 }
 
 
