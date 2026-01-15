@@ -1,9 +1,8 @@
 #include "Zombie.hpp"
 
-// Ici on utilise un constructeur avec paramètre car on veut créer un seul zombie
-Zombie::Zombie(std::string name)
+//Ici le constructeur est par defaut car on appelle un setter par la suite.(pour plusieurs zombies)
+Zombie::Zombie()
 {
-    this->name = name;
 }
 
 Zombie::~Zombie()
@@ -11,7 +10,13 @@ Zombie::~Zombie()
     std::cout << "Zombie " << this->name << " destroyed" << std::endl;
 }
 
+
 void Zombie::announce(void)
 {
     std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void Zombie::setName(std::string n)
+{
+    this->name = n;
 }
