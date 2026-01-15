@@ -14,6 +14,4 @@ class Zombie
         void announce(void);
 };
 
-
-
 #endif
