@@ -3,10 +3,24 @@
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
+#include <cctype>
+
+
+std::string sanitize(std::string s)
+{
+    for (size_t i = 0; i < s.size(); i++)
+    {
+        unsigned char c = static_cast<unsigned char>(s[i]);
+        if (std::iscntrl(c))
+            s[i] = ' ';
+    }
+    return (s)
+}
 
 // If the string is to long, we take only 10 first carracters and we add "."
 std::string truncate(std::string str)
 {
+    str = sanitize(str);
     if (str.length() > 10)
         return (str.substr(0, 9) + ".");
     return (str);
