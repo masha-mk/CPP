@@ -20,6 +20,7 @@ int main(int argc, char **argv)
     }
     for (int i = 1; i < argc; i++)
     {
+        //Constructeur avec argv[i] en paramètre
         std::string str(argv[i]);
         for (size_t j = 0; j < str.length(); j++)
             str[j] = std::toupper(str[j]);

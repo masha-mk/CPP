@@ -6,6 +6,16 @@
 #include <cctype>
 
 
+bool isWhitespace(std::string str)
+{
+    for (size_t i = 0; i < str.size(); i++)
+    {
+        if (!std::isspace(str[i]))
+            return (false);
+    }
+    return (true);
+}
+
 std::string sanitize(std::string s)
 {
     for (size_t i = 0; i < s.size(); i++)
@@ -14,7 +24,7 @@ std::string sanitize(std::string s)
         if (std::iscntrl(c))
             s[i] = ' ';
     }
-    return (s)
+    return (s);
 }
 
 // If the string is to long, we take only 10 first carracters and we add "."
@@ -49,7 +59,7 @@ bool PhoneBook::addContact(void)
     std::cout << "First name: "; 
     if (!std::getline(std::cin, input)) 
         return (false);
-    while (input.empty())
+    while (input.empty() || isWhitespace(input))
     {
         std::cout << "Field can't be empty. First name: ";
         if (!std::getline(std::cin, input))
@@ -61,7 +71,7 @@ bool PhoneBook::addContact(void)
     std::cout <<"Last name: ";
     if (!std::getline(std::cin, input))
         return (false);
-    while (input.empty())
+    while (input.empty() || isWhitespace(input))
     {
         std::cout << "Field can't be empty. Last name: ";
         if (!std::getline(std::cin, input))
@@ -73,7 +83,7 @@ bool PhoneBook::addContact(void)
     std::cout <<"Nickname: ";
     if (!std::getline(std::cin, input))
         return (false);
-    while (input.empty())
+    while (input.empty() || isWhitespace(input))
     {
         std::cout << "Field can't be empty. Nickname: ";
         if (!std::getline(std::cin, input))
@@ -85,7 +95,7 @@ bool PhoneBook::addContact(void)
     std::cout <<"Phone number: ";
     if (!std::getline(std::cin, input))
         return (false);
-    while (input.empty())
+    while (input.empty() || isWhitespace(input))
     {
         std::cout << "Field can't be empty. Phone number: ";
         if (!std::getline(std::cin, input))
@@ -97,7 +107,7 @@ bool PhoneBook::addContact(void)
     std::cout <<"Darkest secret: ";
     if (!std::getline(std::cin, input))
         return (false);
-    while (input.empty())
+    while (input.empty() || isWhitespace(input))
     {
         std::cout << "Field can't be empty. Darkest secret: ";
         if (!std::getline(std::cin, input))
@@ -111,7 +121,7 @@ bool PhoneBook::addContact(void)
     //Incriment index (circular)
     this->_index = (this->_index + 1) % 8;
 
-    //Incriment total until its 8
+    //Incriment total until it is 8
     if (this->_total < 8)
         this->_total++;
     return (true);
