@@ -21,7 +21,7 @@ std::string sanitize(std::string s)
     for (size_t i = 0; i < s.size(); i++)
     {
         unsigned char c = static_cast<unsigned char>(s[i]);
-        if (std::iscntrl(c))
+        if (std::iscntrl(c)) //detecte le caractère de contrôle
             s[i] = ' ';
     }
     return (s);
@@ -37,10 +37,8 @@ std::string truncate(std::string str)
 }
 
 //Constructeur
-PhoneBook::PhoneBook()
+PhoneBook::PhoneBook() : _index(0), _total(0)
 {
-    this->_index = 0;
-    this->_total = 0;
 }
 
 //Destructeur
@@ -135,7 +133,7 @@ setw is equal to: printf("%10s", "Maria") in C.
 */
 void PhoneBook::print_Contacts(void)
 {
-    std::cout << "      index|first name | last name|nickname" << std::endl;
+    std::cout << "      index|first name|last name|nickname" << std::endl;
     for (int i = 0; i < this->_total; i++)
     {
         Contact c = this->_contacts[i];
