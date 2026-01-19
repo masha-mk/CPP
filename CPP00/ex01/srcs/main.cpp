@@ -13,7 +13,7 @@ int main (void)
         //Si la lecture de l entrée standard a échoué, break
         if (!std::getline(std::cin, cmd))
         {
-            std::cout << std::endl << "exit" <<std::endl;
+            std::cout << std::endl << "exit" << std::endl;
             break;
         }
         if (cmd == "EXIT")

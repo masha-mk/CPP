@@ -1,27 +1,38 @@
-NAME = war
+NAME = zombie
 
-SRCS =  HumanA.cpp \
-		HumanB.cpp \
-		Weapon.cpp \
-		main.cpp
+SRC_DIR = srcs
+INC_DIR = includes
+OBJ_DIR = obj
 
-OBJS = $(SRCS:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+SRC_FILES = main.cpp \
+			HumanA.cpp \
+			HumanB.cpp \
+			Weapon.cpp \
+			
+SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.cpp=.o))
+
 CXX = c++
-RM = rm -rf
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
 
-all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+all : $(NAME)
 
-%.o:%.cpp
+$(NAME) : $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -rf $(NAME)
 
-re: fclean all
+re: fclean all 
+
+.PHONY: all clean fclean re
+
