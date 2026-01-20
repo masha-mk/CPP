@@ -1,15 +1,13 @@
 #include "Harl.hpp"
 
-void complain( std::string level )
-{
-    if (level == "DEBUG")
-
-        
-}
 
 int main(void)
 {
     Harl Harl;
-    
 
+    Harl.complain("DEBUG");
+    Harl.complain("WARNING");
+    Harl.complain("");
+    Harl.complain("ERROR");
+    
 }
