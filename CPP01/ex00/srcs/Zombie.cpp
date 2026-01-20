@@ -1,9 +1,8 @@
 #include "Zombie.hpp"
 
 // Ici on utilise un constructeur avec paramètre car on veut créer un seul zombie
-Zombie::Zombie(std::string name)
+Zombie::Zombie(std::string name):name(name)
 {
-    this->name = name;
 }
 
 Zombie::~Zombie()

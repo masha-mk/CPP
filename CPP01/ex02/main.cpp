@@ -13,13 +13,13 @@ int main(void)
     std::string& stringREF = string;
 
     std::cout << "Memory address of the string: " << &string << std::endl;
-    std::cout << "Memory address of the stringPTR: " << stringPTR << std::endl;
-    std::cout << "Memory address of the stringREF: " << &stringREF << std::endl;
+    std::cout << "Memory address held by stringPTR: " << stringPTR << std::endl;
+    std::cout << "Memory address held by stringREF: " << &stringREF << std::endl;
 
     std::cout << "\n";
 
     std::cout << "The value of the string: " << string << std::endl;
-    std::cout << "The value of the stringPTR: " << *stringPTR << std::endl;
-    std::cout << "The value of the stringREF: " <<stringREF << std::endl;
+    std::cout << "The value pinted to by stringPTR: " << *stringPTR << std::endl;
+    std::cout << "The value pointed to by stringREF: " <<stringREF << std::endl;
 
 }

@@ -5,6 +5,7 @@
 int main()
 {
     {
+        //reference
         Weapon club = Weapon("crude spiked club");
         HumanA bob("Bob", club);
         bob.attack();
@@ -12,9 +13,10 @@ int main()
         bob.attack();
     }
     {
+        //pointeur
         Weapon club = Weapon("crude spiked club");
         HumanB jim("Jim");
-        jim.setWeapon(club);
+        jim.setWeapon(club); //pointe maintenant sur le club
         jim.attack();
         club.setType("some other type of club");
         jim.attack();

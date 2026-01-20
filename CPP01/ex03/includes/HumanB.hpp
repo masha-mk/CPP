@@ -14,7 +14,7 @@ class HumanB
         HumanB(const std::string& name);
     //methode de classe attack
         void attack(void)const;
-    //setter
+    //setter car peut etre changé
         void setWeapon(Weapon& weapon);
 };
 
