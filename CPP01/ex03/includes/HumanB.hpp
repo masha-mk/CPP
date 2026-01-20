@@ -1,17 +1,21 @@
 #ifndef HUMANB_HPP
 #define HUMANB_HPP
 
-#endif
-
 #include "Weapon.hpp"
 
+//Human B peut ne pas avoir d arme. Donc ici on utilise un pointeur
 class HumanB
 {
     private:
         Weapon* weapon;
         std::string name;
     public:
-        HumanB(std::string name);
+    //constructeur
+        HumanB(const std::string& name);
+    //methode de classe attack
         void attack(void)const;
+    //setter
         void setWeapon(Weapon& weapon);
 };
+
+#endif
