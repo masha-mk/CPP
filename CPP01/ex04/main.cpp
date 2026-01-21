@@ -15,20 +15,27 @@ int main(int argc, char **argv)
         std::string s1 = argv[2];
         std::string s2 = argv[3];
         std::string line;
+
+        if (s1.empty())
+        {
+            std::cerr << "Error: s1 cannot be empty" << std::endl;
+            return (1);
+        }
         
         //classe pour lire des fichiers (input file stream)
         std::ifstream inputFile(filename.c_str());
         //classe pour ecrire des fichiers (output file stream)
         std::ofstream outputFile((filename + ".replace").c_str());
 
+        //Verification si les fichiers peuvent etre ouverts
         if (!inputFile.is_open())
         {
-            std::cerr << "Error: Could not open file" << std::endl;
+            std::cerr << "Error: Failed to open input file" << std::endl;
             return (1);
         }
         if (!outputFile.is_open())
         {
-            std::cerr << "Error: Failed to open input file" << std::endl;
+            std::cerr << "Error: Failed to open output file" << std::endl;
             return (1);
         }
         while (std::getline(inputFile, line))

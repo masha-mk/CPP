@@ -21,23 +21,27 @@ int main(int argc, char **argv)
             break;
         }
     }
-
+    //fall though -commentaire ppur le compilateur de passer au suivant
     switch (levelIndex)
     {
         case 0:
-            std::cout << "DEBUG" << std::endl;
+            std::cout << "[ DEBUG ]" << std::endl;
             harl.complain("DEBUG");
+            /* fall through */ 
         case 1:
-            std::cout << "INFO" << std::endl;
+            std::cout << "[ INFO ]" << std::endl;
             harl.complain("INFO");
+            /* fall through */
         case 2:
-            std::cout << "WARNING" << std::endl;
+            std::cout << "[ WARNING ]" << std::endl;
             harl.complain("WARNING");
+            /* fall through */
         case 3:
-            std::cout << "ERROR" << std::endl;
+            std::cout << "[ ERROR ]" << std::endl;
             harl.complain("ERROR");
+            break;
         default:
             std::cout << "Probably complaining about insignificant problems" << std::endl;
-
     }
+    return (0);
 }
