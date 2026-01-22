@@ -1,20 +1,5 @@
 #include <iostream>
-
-/*Fixed point est une façon de stocjer des nombres avec des 
-decimale en utilisant un int en mémoire.
-
-Il faut choisir un nombre de bits réservés à la partie
-décimale. Ici c est 8 derniers (sur 32 habituellement)
-
-3.5
-3.5 * (2^8) = 896   (2^8 = 256)
-raw = 896 (on stock dans la memoire) 
-L idée c est etre plus précis, ne pas avoir d arrondis bizarres
-qui peuvent flouter les calculs.
-       [entier] [fraction]
-896 = 00000011 10000000 
-        3 bits  128 bits = 128/256 = 0.5
-*/
+#include <cmath>
 
 class Fixed
 {
@@ -28,8 +13,16 @@ class Fixed
         Fixed(const Fixed& other);
         // Remplacer le contenu de la copie du constructeur par le premier (other)
         Fixed& operator=(const Fixed& other);
+        std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
+
+        Fixed(const int value);
+        Fixed(const float nb);
+         
         // Destructeur
         ~Fixed();
+        
         int getRawBits(void) const;
         void setRawBits(int const raw);
+        int toInt(void) const;
+        int toFloat(void) const;
 };
