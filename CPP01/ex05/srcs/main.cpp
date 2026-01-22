@@ -4,11 +4,12 @@
 int main(void)
 {
     Harl harl;
-
-    harl.complain("DEBUG");
-    harl.complain("WARNING");
-    harl.complain("INFO");
-    harl.complain("ERROR");
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    
+    for (int i = 0; i < 4; i++)
+    {
+        harl.complain(levels[i]);
+    }
 
     return (0);
 }
