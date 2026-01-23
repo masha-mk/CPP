@@ -10,8 +10,10 @@ Fixed::Fixed(void): a(0)
 Fixed::Fixed(const Fixed &other)
 {
     //std::cout << "Copy constructor called" << std::endl;
-    *this = other; // appelle opérateur =
+    this->a = other.a; 
 }
+
+
 //Constructeur qui transforme un nombre normal en fixed point avec un int en paramètre
 // 00000000 00001010 << 8 bits (10)
 // 00001010 00000000 
@@ -30,14 +32,17 @@ Fixed::Fixed(const float nb)
     this->a = static_cast <int>(roundf(nb * (1<<fractionalBits)));
 }
 
+
+
 Fixed::~Fixed(void)
 {
     //std::cout << "Destructor called" << std::endl;
 }
 
+
 /*------------Opérateurs-------------------*/
 
- Fixed& Fixed::operator=(const Fixed& other)
+Fixed& Fixed::operator=(const Fixed& other)
 {
     //std::cout << "Copy assignment operator called" << std::endl;
     // Verifier que l adresse de l objet courant(this) n est pas egale à l adresse de other

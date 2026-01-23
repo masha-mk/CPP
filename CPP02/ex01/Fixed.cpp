@@ -8,8 +8,10 @@ Fixed::Fixed(void): a(0)
 Fixed::Fixed(const Fixed &other)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = other; // appelle opérateur =
+    *this = other; // appelle opérateur = pour l affichage mais c mieux this->a = other.a
 }
+
+
 //Constructeur qui transforme un nombre normal en fixed point avec un int en paramètre
 // 00000000 00001010 << 8 bits (10)
 // 00001010 00000000 
@@ -34,8 +36,10 @@ Fixed::~Fixed(void)
     std::cout << "Destructor called" << std::endl;
 }
 
+
+
  Fixed& Fixed::operator=(const Fixed& other)
-{
+ {
     std::cout << "Copy assignment operator called" << std::endl;
     // Verifier que l adresse de l objet courant(this) n est pas egale à l adresse de other
     if (this != &other)
@@ -45,7 +49,7 @@ Fixed::~Fixed(void)
         this->a = other.a;
     }
     return (*this);
-}
+ }
 
 int Fixed::getRawBits(void)const
 {

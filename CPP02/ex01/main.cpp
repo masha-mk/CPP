@@ -13,13 +13,15 @@ int main( void )
     //Copy assignment operator called
     //Float constructor called
     //Copy assignment operator called
-    a = Fixed( 1234.4321f ); //a = objet temporaire
+    a = Fixed( 1234.4321f ); //a = objet temporaire que j assigne à a
     
+    //Avec std::ostream& operator<<(std::ostream& out, const Fixed& fixed) (float)
     std::cout << "a is " << a << std::endl;
     std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;
     std::cout << "d is " << d << std::endl;
     
+    // Sans
     std::cout << "a is " << a.toInt() << " as integer" << std::endl;
     std::cout << "b is " << b.toInt() << " as integer" << std::endl;
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
