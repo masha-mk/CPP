@@ -7,10 +7,9 @@ Fixed::Fixed(void): a(0)
     //std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &other)
+Fixed::Fixed(const Fixed &other):a(other.a)
 {
     //std::cout << "Copy constructor called" << std::endl;
-    this->a = other.a; 
 }
 
 

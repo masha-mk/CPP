@@ -23,11 +23,12 @@ Fixed::Fixed(const int value)
 }
 
 //Constructeur qui transforme un nombre normal en fixed point avec un float en paramètre
+// On decale 1 de 8 bit et puis on multiplie le float (l inverse impossible)
 // on arrondit le resultat de nb * 256 
 Fixed::Fixed(const float nb)
 {
     std::cout << "Float constructor called" << std::endl;
-    this->a = static_cast <int>(roundf(nb * (1<<fractionalBits)));
+    this->a = static_cast <int>(roundf(nb * (1 << fractionalBits))); // 1 << 8 = 256
 }
 
 
@@ -75,7 +76,7 @@ float Fixed::toFloat(void) const
     return (static_cast<float>(this->a) / (1 << fractionalBits));
 }
 // ecrire std::cout << fixed au lieu de std::cout << fixed.toFloat()
-// On modifie out passer en ref et on retourne un nouveau resultat.
+// On modifie out passé en ref et on retourne un nouveau resultat.
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
 {
     out << fixed.toFloat();
