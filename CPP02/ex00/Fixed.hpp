@@ -30,6 +30,7 @@ class Fixed
         Fixed& operator=(const Fixed& other);
         // Destructeur
         ~Fixed();
+        
         int getRawBits(void) const;
         void setRawBits(int const raw);
 };
