@@ -1,5 +1,6 @@
 #include "Fixed.hpp"
 
+
 Fixed::Fixed(void): a(0)
 {
     std::cout << "Default constructor called" << std::endl;
@@ -12,19 +13,21 @@ Fixed::Fixed(const Fixed &other)
 }
 
 
-//Constructeur qui transforme un nombre normal en fixed point avec un int en paramètre
+//Constructeur qui transforme le nombre en fixed point avec un int en paramètre
 // 00000000 00001010 << 8 bits (10)
 // 00001010 00000000 
 //bit 9 et 11 sont égaux à 11 donc 2^11 + 2^9 = 2048 + 512 = 2560
+
 Fixed::Fixed(const int value)
 {
     std::cout << "Int constructor called" << std::endl;
     this->a = value << fractionalBits; // value * 256 (2^8)
 }
 
-//Constructeur qui transforme un nombre normal en fixed point avec un float en paramètre
+//Constructeur qui transforme le normal en fixed point avec un float en paramètre
 // On decale 1 de 8 bit et puis on multiplie le float (l inverse impossible)
 // on arrondit le resultat de nb * 256 
+
 Fixed::Fixed(const float nb)
 {
     std::cout << "Float constructor called" << std::endl;
@@ -61,7 +64,7 @@ int Fixed::getRawBits(void)const
 void Fixed::setRawBits(int const raw)
 {
     std::cout << "setRawBits member function called" << std::endl;
-    //modifier la valeur de l attribut a
+    //modifier la valeur de l attribut privé
     this->a = raw;
 }
 

@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
@@ -83,6 +84,53 @@ int main(void)
 
         std::cout << "--- ScavTrap Destructors (ScavTrap -> ClapTrap) ---" << std::endl;
     }
+    std::cout << "\n========================================" << std::endl;
+    std::cout << "        FRAGTRAP TESTS" << std::endl;
+    std::cout << "========================================\n" << std::endl;
+    {
+                // Test 1: Constructors show inheritance order
+        std::cout << "--- Constructors (ClapTrap -> FragTrap) ---" << std::endl;
+        FragTrap a;              // Default
+        FragTrap b(a);           // Copy
+        FragTrap c("Alice");     // Parameterized
+        std::cout << std::endl;
 
+        // Test 2: Assignment operator
+        std::cout << "--- Assignment Operator ---" << std::endl;
+        a = b;
+        std::cout << std::endl;
+
+        // Test 3: FragTrap attack (different message from ClapTrap)
+        std::cout << "--- Attack Test (FragTrap specific message) ---" << std::endl;
+        b.attack("target");
+        c.attack("target");
+        a.attack("target");
+        std::cout << std::endl;
+
+        // Test 4: High Five (FragTrap specific function)
+        std::cout << "--- Guard Gate (FragTrap special ability) ---" << std::endl;
+        a.highFivesGuys();
+        b.highFivesGuys();
+        std::cout << std::endl;
+
+        // Test 5: Taking damage (inherited function)
+        std::cout << "--- Taking Damage Test ---" << std::endl;
+        b.takeDamage(20);
+        b.takeDamage(40);
+        std::cout << std::endl;
+
+        // Test 6: Energy depletion (100 attacks)
+        std::cout << "--- Energy Test (100 attacks should deplete) ---" << std::endl;
+        for (int i = 0; i < 100; i++)
+            b.attack("enemy");
+        std::cout << std::endl;
+
+        // Test 7: Repair with no energy
+        std::cout << "--- Repair Test (should fail, no energy) ---" << std::endl;
+        b.beRepaired(30);
+        std::cout << std::endl;
+
+        std::cout << "--- FragTrap Destructors (FragTrap -> ClapTrap) ---" << std::endl;
+    }
     return (0);
 }

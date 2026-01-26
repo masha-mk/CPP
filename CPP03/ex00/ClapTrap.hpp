@@ -10,11 +10,12 @@ class ClapTrap
         std::string name;
         int hitPoints;
         int energy;
+        // ici 0 et ne change pas
         int attackDamage;
 
     public:
         ClapTrap();
-        ClapTrap(std::string& name);
+        ClapTrap(const std::string& name);
         ClapTrap(const ClapTrap& other);
         
         ~ClapTrap();

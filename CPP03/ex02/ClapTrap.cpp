@@ -14,7 +14,6 @@ ClapTrap::ClapTrap(const std::string& name): name(name), hitPoints(10), energy(1
 }
 
 
-
 // Copy constructor
 ClapTrap::ClapTrap(const ClapTrap& other): 
                             name(other.name), hitPoints(other.hitPoints),
