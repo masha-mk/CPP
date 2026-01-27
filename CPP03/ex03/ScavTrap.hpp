@@ -4,11 +4,11 @@
 #include "ClapTrap.hpp"
 
 //ScavTrap hérite de Clavtrap, donc il a accès a ses attributs protected ou publics.
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
     public:
         ScavTrap();
-        ScavTrap(const std::string &name);
+        ScavTrap(const std::string& name);
         ScavTrap(const ScavTrap& other);
         ~ScavTrap();
 

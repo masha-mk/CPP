@@ -4,11 +4,13 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-class FragTrap : public ClapTrap
+//virtual = FragTrap et ScavTrap n appellent pas ClapTrap car virtual
+// FragTrap et les autres partagent la meme copie de ClapTrap (une seule instance)
+class FragTrap : virtual public ClapTrap
 {
     public: 
         FragTrap();
-        FragTrap(const std::string name);
+        FragTrap(const std::string& name);
         FragTrap(const FragTrap& other);
         ~FragTrap();
 

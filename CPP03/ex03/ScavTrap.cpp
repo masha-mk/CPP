@@ -12,7 +12,7 @@ ScavTrap::ScavTrap() // : ClapTrap() - appelle le constructeur par devfaut
 : ClapTrap(name) -> appelle le constructeur ClapTrap et nitialise avec les valeurs de base du constructeur ClapTrap
 Dans le corps de la fonction, on change les valeurs
 */
-ScavTrap::ScavTrap(const std::string &name): ClapTrap(name)
+ScavTrap::ScavTrap(const std::string& name): ClapTrap(name)
 {
     hitPoints = 100;
     energy = 50;

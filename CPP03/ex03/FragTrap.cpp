@@ -13,7 +13,7 @@ FragTrap::FragTrap() // : ClapTrap() - appelle le constructeur par devfaut
 Dans le corps de la fonction, on change les valeurs
 */
 
-FragTrap::FragTrap(const std::string name): ClapTrap(name)
+FragTrap::FragTrap(const std::string& name): ClapTrap(name)
 {
     hitPoints = 100;
     energy = 100;

@@ -13,12 +13,12 @@ FragTrap::FragTrap() // : ClapTrap() - appelle le constructeur par devfaut
 Dans le corps de la fonction, on change les valeurs
 */
 
-FragTrap::FragTrap(const std::string name): ClapTrap(name)
+FragTrap::FragTrap(const std::string &name): ClapTrap(name)
 {
     hitPoints = 100;
     energy = 100;
     attackDamage = 30;
-     std::cout << "Parameterized FragTrap " << name << " constructor called" << std::endl;
+    std::cout << "Parameterized FragTrap " << name << " constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& other): ClapTrap(other)
