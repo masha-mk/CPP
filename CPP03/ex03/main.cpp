@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
@@ -131,6 +132,54 @@ int main(void)
         std::cout << std::endl;
 
         std::cout << "--- FragTrap Destructors (FragTrap -> ClapTrap) ---" << std::endl;
+    }
+    std::cout << "\n========================================" << std::endl;
+    std::cout << "        DIAMONDTRAP TESTS" << std::endl;
+    std::cout << "========================================\n" << std::endl;
+    {
+        // Test 1: Constructors show inheritance order
+        std::cout << "--- Constructors (ClapTrap -> ScavTrap -> FragTrap -> DiamondTrap) ---" << std::endl;
+        DiamondTrap a;              // Default
+        DiamondTrap b(a);           // Copy
+        DiamondTrap c("Alice");     // Parameterized
+        std::cout << std::endl;
+
+        // Test 2: Assignment operator
+        std::cout << "--- Assignment Operator ---" << std::endl;
+        a = b;
+        std::cout << std::endl;
+
+        // Test 3: DiamondTrap attack (different message from ClapTrap)
+        std::cout << "--- Attack Test (DiamondTrap specific message) ---" << std::endl;
+        b.attack("target");
+        c.attack("target");
+        a.attack("target");
+        std::cout << std::endl;
+
+        // Test 4: whoAmI(DiamondTrap specific function)
+        std::cout << "--- whoAmI? ---" << std::endl;
+        a.whoAmI();
+        b.whoAmI();
+        std::cout << std::endl;
+
+         // Test 5: Taking damage (inherited function)
+        std::cout << "--- Taking Damage Test ---" << std::endl;
+        b.takeDamage(20);
+        b.takeDamage(40);
+        std::cout << std::endl;
+
+        // Test 6: Energy depletion (50 attacks)
+        std::cout << "--- Energy Test (50 attacks should deplete) ---" << std::endl;
+        for (int i = 0; i < 50; i++)
+            b.attack("enemy");
+        std::cout << std::endl;
+
+        // Test 7: Repair with no energy
+        std::cout << "--- Repair Test (should fail, no energy) ---" << std::endl;
+        b.beRepaired(30);
+        std::cout << std::endl;
+
+        std::cout << "--- DiamondTrap Destructors (DiamondTrap->FrapTrap->ScavTrap->ClapTrap) ---" << std::endl;
     }
     return (0);
 }

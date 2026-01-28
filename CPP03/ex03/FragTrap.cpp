@@ -18,7 +18,7 @@ FragTrap::FragTrap(const std::string& name): ClapTrap(name)
     hitPoints = 100;
     energy = 100;
     attackDamage = 30;
-     std::cout << "Parameterized FragTrap " << name << " constructor called" << std::endl;
+    std::cout << "Parameterized FragTrap " << name << " constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& other): ClapTrap(other)
@@ -30,6 +30,8 @@ FragTrap::~FragTrap()
 {
      std::cout << "FragTrap destructor called" << std::endl;
 }
+
+
 
 FragTrap& FragTrap::operator=(const FragTrap& other)
 {

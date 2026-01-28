@@ -14,6 +14,7 @@ class ScavTrap : public ClapTrap
 
         ScavTrap& operator=(const ScavTrap& other);
         
+        // Polymorphisme (redéfinition pour avoir un autre message)
         void attack(const std::string &target);
         void guardGate();
 };
