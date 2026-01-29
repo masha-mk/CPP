@@ -1,27 +1,37 @@
 NAME = a.out
 
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+RM = rm -rf
+
+SRCDIR = srcs
+INCDIR = includes
+OBJDIR = objs
+
 SRCS = main.cpp \
 	   ClapTrap.cpp \
 	   ScavTrap.cpp \
-	   FragTrap.cpp \
+	   FragTrap.cpp
 
-OBJS = $(SRCS:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-CXX = c++
-RM = rm -rf
+OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-%.o:%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -I$(INCDIR) -c $< -o $@
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJDIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

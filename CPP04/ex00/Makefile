@@ -1,4 +1,4 @@
-NAME = a.out
+NAME = animal
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
@@ -9,8 +9,11 @@ INCDIR = includes
 OBJDIR = objs
 
 SRCS = main.cpp \
-	   ClapTrap.cpp \
-	   ScavTrap.cpp
+       Animal.cpp \
+       Dog.cpp \
+       Cat.cpp \
+       WrongAnimal.cpp \
+       WrongCat.cpp
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 
