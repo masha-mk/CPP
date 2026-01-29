@@ -20,7 +20,7 @@ int main()
         // Dog constructor called
         const Animal* j = new Dog();
         
-        // Parameterized constructor called (Cat constructor appelle Animal("Dog"))
+        // Parameterized constructor called (Cat constructor appelle Animal("Cat"))
         // Cat constructor called
         const Animal* i = new Cat();
         
