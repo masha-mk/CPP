@@ -50,7 +50,7 @@ int main( void )
     }
  
     std::cout << "\n";
-    std::cout << "[ Incrimentation / Descrementation ]" << std::endl;
+    std::cout << "[ Incrimentation / Decrementation ]" << std::endl;
     std::cout << "\n";
     {
             Fixed a(5);
